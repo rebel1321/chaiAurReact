@@ -1,0 +1,27 @@
+In React, terms like Virtual DOM, Fiber, and Reconciliation play key roles in how the library efficiently updates the user interface. Here’s a simple explanation of each concept with examples.
+
+1. Virtual DOM
+The Virtual DOM is an in-memory representation of the actual DOM (Document Object Model) that browsers use to render webpages. Instead of directly updating the actual DOM, React updates this virtual DOM first and then calculates the minimal changes required to update the real DOM. This process is faster and helps improve app performance.
+
+Example: Imagine you have a list of items on a webpage. If you add a new item to the list, React will update the Virtual DOM with this new item first, compare it with the previous version, and only add the specific new item to the real DOM. This avoids re-rendering the entire list and makes the update faster.
+
+2. Reconciliation
+Reconciliation is the process React uses to determine the changes needed between the current Virtual DOM and the new Virtual DOM. It compares the old and new versions of the Virtual DOM to identify which elements need to be updated, added, or removed in the actual DOM.
+
+Example: Continuing with the list example, when you add an item to the list:
+
+React creates a new Virtual DOM version with the updated list.
+It compares the new Virtual DOM with the previous one and sees that only one new item has been added.
+React then reconciles this change by only adding that specific item to the actual DOM.
+This “diffing” and “patching” process allows React to avoid unnecessary updates, making the app feel more responsive.
+
+3. Fiber
+Fiber is React’s underlying architecture that helps handle updates more efficiently, especially with complex or large apps. Fiber breaks the update process into smaller, manageable units so React can prioritize important updates and pause work if needed. This makes it possible to keep the app responsive, even when there are large updates.
+
+Example: Imagine you have a page with a form and a big animation. Without Fiber, if the animation update takes too long, it might freeze the form, making it unresponsive. Fiber splits the work so React can prioritize user input, like filling out the form, over less critical updates like the animation. It improves the user experience by making the UI stay responsive during heavy processing.
+
+In summary:
+
+Virtual DOM: A lightweight copy of the actual DOM that React uses to efficiently track changes.
+Reconciliation: The process of comparing old and new Virtual DOM trees to identify minimal DOM updates.
+Fiber: React’s architecture for handling complex updates more efficiently, keeping the app responsive.
